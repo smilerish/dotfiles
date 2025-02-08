@@ -1,0 +1,3 @@
+[v1]
+"cargo-generate 0.22.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
+"wasm-pack 0.13.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["wasm-pack"]

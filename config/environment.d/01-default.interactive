@@ -1,0 +1,11 @@
+## Interactive environment variables
+#	Only loaded for interactive shells
+# Common user config directories
+ELINKS_CONFDIR=$XDG_CONFIG_HOME/elinks
+LYNX_CFG=$XDG_CONFIG_HOME/lynx/lynx.cfg
+# Common user data directories
+VSCODE_PORTABLE=$XDG_DATA_HOME/vscode
+# Common user state directories
+LESSHISTFILE=$XDG_STATE_HOME/less/history
+NODE_REPL_HISTORY=$XDG_STATE_HOME/node/repl_history
+PYTHON_HISTORY=$XDG_STATE_HOME/python/history

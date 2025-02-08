@@ -1,0 +1,3 @@
+[submodule "share/gitignore"]
+	path = share/gitignore
+	url = https://github.com/github/gitignore.git

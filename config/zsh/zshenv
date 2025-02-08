@@ -1,0 +1,22 @@
+# Make sure that custom environment variables have been loaded from
+# environment.d, loading them if not
+#	(systemd should do this automatically at logon. This loop does the same in
+#	systemd's absence e.g. on macOS)
+
+[[ -z "$ENVD" ]] && env_files=( $HOME/.config/environment.d/*.conf(N) )
+
+# Bonus! Load environment variables only needed for interactive and login
+# shells from the same location.
+[[ -o interactive ]] && env_files+=( $HOME/.config/environment.d/*.interactive(N) )
+[[ -o login ]] && env_files+=( $HOME/.config/environment.d/*.login(N) )
+
+if [[ ! -z $env_files ]] ; then
+	set -a
+	for f in  $env_files; do
+		. "$f"
+	done
+	set +a
+fi
+
+# Create the XDG Base directories if they're missing
+mkdir -pm 701 "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME"

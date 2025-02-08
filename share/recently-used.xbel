@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///Users/alex/Downloads/peacock.jpg" added="2024-11-25T16:49:00.060858Z" modified="2024-11-25T16:49:00.060867Z" visited="2024-11-25T16:49:00.060861Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.10 %u&apos;" modified="2024-11-25T16:49:00.060865Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///Users/alex/Downloads/peacock.txt.jpg" added="2024-11-25T17:01:31.134827Z" modified="2024-11-25T17:01:53.734527Z" visited="2024-11-25T17:01:31.134829Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.10 %u&apos;" modified="2024-11-25T17:01:53.734524Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///Users/alex/Downloads/Untitled_04122024_095117.tif" added="2024-12-04T10:00:34.311943Z" modified="2024-12-04T10:00:34.311948Z" visited="2024-12-04T10:00:34.311944Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/tiff"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.10 %u&apos;" modified="2024-12-04T10:00:34.311946Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///Users/alex/Downloads/Connor%20school%20photo%202024.heif" added="2024-12-04T10:02:52.067802Z" modified="2024-12-04T10:03:16.765806Z" visited="2024-12-04T10:02:52.067803Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/heif"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.10 %u&apos;" modified="2024-12-04T10:03:16.765804Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///Users/alex/Downloads/Connor%20school%20photo%202024.tif" added="2024-12-04T10:03:54.342369Z" modified="2024-12-04T10:04:10.368704Z" visited="2024-12-04T10:03:54.342371Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/tiff"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.10 %u&apos;" modified="2024-12-04T10:04:10.368702Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>
