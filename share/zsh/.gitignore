@@ -1,2 +1,4 @@
 oh-my-zsh/
 zim/modules/
+zim/init.zsh
+*.zsh.old

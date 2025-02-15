@@ -16,6 +16,7 @@ zmodule qoomon/zsh-lazyload
 zmodule MichaelAquilina/zsh-you-should-use
 zmodule ohmyzsh/ohmyzsh --root plugins/bgnotify
 zmodule ohmyzsh/ohmyzsh --root plugins/podman --if-command 'podman'
+#zmodule ohmyzsh/ohmyzsh --root plugins/docker --if-command 'docker'
 zmodule ohmyzsh/ohmyzsh --root plugins/1password --if-command "op"
 zmodule ohmyzsh/ohmyzsh --root plugins/iterm2 --if '[[ $LC_TERMINAL = iTerm2 ]]'
 zmodule ohmyzsh/ohmyzsh --root plugins/systemd --if-command "systemctl"
@@ -25,9 +26,9 @@ zmodule ohmyzsh/ohmyzsh --root plugins/tmux --if-command 'tmux' --if '[[ -n "$SS
 
 # Prompt
 #
-zmodule duration-info # Exposes how long the last command took to execute
-zmodule git-info # Exposes git repository status to prompts.
-zmodule prompt-pwd # Exposes pwd to the prompt
+#zmodule duration-info # Exposes how long the last command took to execute
+#zmodule git-info # Exposes git repository status to prompts.
+#zmodule prompt-pwd # Exposes pwd to the prompt
 zmodule romkatv/powerlevel10k # p10k prompt
 
 # Completion
