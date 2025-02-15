@@ -1,0 +1,19 @@
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=951 #containers
+      - PGID=950 #containers
+      - TZ=Etc/UTC
+      - VERSION=docker
+    group_add:
+      - 972 #shared
+      - video
+    volumes:
+      - /home/shared/media/Library/plex:/config
+      - /home/shared/media/:/media
+    devices:
+      - "/dev/dri:/dev/dri"
+    restart: unless-stopped

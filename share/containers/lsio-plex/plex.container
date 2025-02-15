@@ -1,0 +1,17 @@
+# plex.container
+[Unit]
+Description=Plex Media Server
+
+[Container]
+UserNS=auto
+#AddDevice=/dev/dri
+ContainerName=plex
+Environment=PUID=972 PGID=972 TZ=Etc/UTC VERSION=docker
+Image=lscr.io/linuxserver/plex:latest
+Network=host
+#GroupAdd=985,989
+Volume=/home/shared/media/Library/plex:/config
+Volume=/home/shared/media/:/media:ro
+
+[Service]
+Restart=always
