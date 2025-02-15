@@ -1,9 +1,8 @@
-# Start/attach to tmux on login
-if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]; then
-	systemctl --user is-active --quiet tmux.service || \
-		systemctl --user start tmux.service
-	exec tmux new-session -As $USER
-fi
+# Enable Powerlevel10k instant prompt. Should stay close to the top of zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+[[ -s "{$XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]] &&
+	source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 # Make zsh honour the XDG spec
 mkdir -pm 701 ${XDG_CACHE_HOME}/zsh && ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh && \
@@ -11,21 +10,21 @@ mkdir -pm 701 ${XDG_CACHE_HOME}/zsh && ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh && \
 	zstyle ':completion::complete:*' cache-path ${ZSH_CACHE_DIR}/zcompcache
 mkdir -pm 701 ${XDG_STATE_HOME}/zsh && HISTFILE=${XDG_STATE_HOME}/zsh/history
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-[[ -s "{$XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]] &&
-	source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+##########################
+### User configuration ###
+##########################
+
+# Source custom/additional completions
+fpath+=( "${XDG_DATA_HOME}/zsh/site-functions" )
+
+# Interactive environment variables
+export EDITOR=$(which vim)
+[[ -x $(which mate) ]] && export VISUAL=$(which mate)
 
 # ------------------------------
 # Zim configuration & install
 # ------------------------------
 ZIM_HOME=${XDG_DATA_HOME}/zsh/zim ; ZIM_CONFIG_FILE=${ZDOTDIR}/zimrc
-# Download zimfw plugin manager if missing.
-[[ -s ${ZIM_HOME}/zimfw.zsh ]] || \
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-
 setopt HIST_IGNORE_ALL_DUPS # Remove older copy if duplicate added.
 bindkey -v # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 setopt CORRECT # Prompt for spelling correction of commands.
@@ -37,12 +36,19 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # Set what highlighters will be used.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
+# Download zimfw plugin manager if missing.
+[[ -s ${ZIM_HOME}/zimfw.zsh ]] || \
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
 [ -z "${ZIM_HOME}/modules/*(N)" ] || \
 	[[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]] && \
 	source ${ZIM_HOME}/zimfw.zsh init -q
- 
+# Setup tmux parameters if this is a SSH terminal
+[[ -n "$SSH_CONNECTION" ]] && \
+	ZSH_TMUX_ITERM2=true && ZSH_TMUX_UNICODE=true && ZSH_TMUX_AUTOSTART=true
+# To customize prompt, run `p10k configure` or edit ~/.local/config/zsh/p10k.zsh.
+[[ -f ~/.local/config/zsh/p10k.zsh ]] && source ~/.local/config/zsh/p10k.zsh
 # Load Zim
 source ${ZIM_HOME}/init.zsh
 
@@ -63,16 +69,3 @@ unset key
 
 # Cargo (Rust package manager)
 [[ -s "$CARGO_HOME/env" ]] && lazyload cargo -- 'source $CARGO_HOME/env'
-
-##########################
-### User configuration ###
-##########################
-# Setup tmux parameters if this is a SSH terminal
-[[ -n "$SSH_CONNECTION" ]] && \
-	ZSH_TMUX_ITERM2=true && ZSH_TMUX_UNICODE=true && ZSH_TMUX_AUTOSTART=true
-# Interactive environment variables
-export EDITOR=$(which vim)
-[[ -x $(which mate) ]] && export VISUAL=$(which mate)
-
-# To customize prompt, run `p10k configure` or edit ~/.local/config/zsh/p10k.zsh.
-[[ -f ~/.local/config/zsh/p10k.zsh ]] && source ~/.local/config/zsh/p10k.zsh
